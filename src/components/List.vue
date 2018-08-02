@@ -10,8 +10,6 @@
 					<th>评论个数</th>
 					<th>单数</th>
 					<th>总评分</th>
-					<th>维修评分</th>
-					<th>服务评分</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -24,8 +22,6 @@
 					<td>{{repair.repairComment}}个</td>
 					<td>{{repair.repairCount}}单</td>
 					<td>{{repair.repairAllGrade}}分</td>
-					<td>{{repair.repairWxGrade}}分</td>
-					<td>{{repair.repairFwGrade}}分</td>
 					<td>
 					    <button v-on:click="delrepair(repair)" class="btn btn-warning btn-xs">删除</button>
 					</td>

@@ -15,6 +15,9 @@
             <li>
               <router-link to="/">修理厂列表</router-link>
             </li>
+            <li>
+              <router-link to="/stateChange">状态更改</router-link>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!-- 登录成功就不显示 -->

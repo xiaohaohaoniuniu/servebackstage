@@ -18,10 +18,6 @@
 				<input type="text" class="form-control" v-model="repairdata.repairCount">
 				<label for="">总评分</label>
 				<input type="text" class="form-control" v-model="repairdata.repairAllGrade">
-				<label for="">维修评分</label>
-				<input type="text" class="form-control" v-model="repairdata.repairWxGrade">
-				<label for="">服务评分</label>
-				<input type="text" class="form-control" v-model="repairdata.repairFwGrade">
 				<button v-on:click="addrepair" class="add-pizza btn btn-info form-control">添加</button>
 			</div>
 		</div>
