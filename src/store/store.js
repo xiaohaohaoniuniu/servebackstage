@@ -5,7 +5,8 @@ var store = new Vuex.Store({
 	state:{
 		isLogin:false,
 		nowUser:null,
-		repairList:[]
+		repairList:[],
+		stateList:[]
 	},
 	mutations:{
 		setLoginIng(state,res){
@@ -24,6 +25,9 @@ var store = new Vuex.Store({
 		delrepair(state,data){
            var index = state.repairList.indexOf(data);
            state.repairList.splice(index,1);
+		},
+		getStateList(state,data){
+			state.stateList = data;
 		}
 	}
 })

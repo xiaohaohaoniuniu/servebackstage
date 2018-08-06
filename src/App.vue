@@ -16,6 +16,7 @@ export default {
     ServeHeader
   },
   created(){
+        // 修理厂列表
         axios.get('/repairList.json')
         .then(res=>{
           var result = res.data;
@@ -24,8 +25,19 @@ export default {
             result[k].id = k;
             pizzaOriginal.push(result[k]);
           }
-          // this.pizzaList = pizzaOriginal
           this.$store.commit('repairList',pizzaOriginal);
+        })
+        // 预约列表
+        axios.get('/appointList.json')
+        .then(res=>{
+          this.loading = false;
+          var stateList = [];
+          for(var k in res.data){
+            res.data[k].appointId = k;
+            stateList.push(res.data[k])
+          }
+          this.$store.commit('getStateList',stateList);
+          console.log(stateList)
         })
       }
 }

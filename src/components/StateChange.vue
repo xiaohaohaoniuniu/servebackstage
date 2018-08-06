@@ -1,8 +1,8 @@
 <template>
 	<div class="stateChange">
-		<div class="loading" v-show="loading">
+		<!-- <div class="loading" v-show="loading">
 			<img src="../assets/loading.gif" alt="">正在加载，请稍后...
-		</div>
+		</div> -->
 		<table class="table table-condensed table-hover">
 			<thead>
 				<tr>
@@ -25,11 +25,13 @@
 					<td>{{state.time}}</td>
 					<td>{{state.price}}</td>
 					<td>{{state.leaveWord}}</td>
-					<td v-if="state.state == '进行中'" v-on:click="stateChange(state.serviceNmber)">
-						<button class="btn btn-sm btn-info">{{state.state}}</button>
+					<td v-if="state.state == '进行中'">
+						<button v-on:click="stateChange(state.serviceNmber)" class="btn btn-xs btn-info">{{state.state}}</button>
+						<button v-on:click="delServe(state.serviceNmber)" class="btn btn-danger btn-xs">删除</button>
 					</td>
 					<td v-else>
-						<button class="btn btn-sm btn-info" disabled>{{state.state}}</button>
+						<button class="btn btn-xs btn-info" disabled>{{state.state}}</button>
+						<button v-on:click="delServe(state.serviceNmber)" class="btn btn-danger btn-xs">删除</button>
 					</td>
 				</tr>
 			</tbody>	
@@ -42,8 +44,13 @@
 		name:'stateChange',
 		data(){
 			return {
-				stateList:[],
-				loading:true
+				// stateList:[],
+				// loading:true
+			}
+		},
+		computed:{
+			stateList(){
+				return this.$store.state.stateList
 			}
 		},
 		methods:{
@@ -63,10 +70,23 @@
 				.then(res=>{
 					console.log("写入成功");
 				})
+			},
+			delServe(serviceNmber){
+				var changeStateWc = this.stateList.filter(function(item){
+					return item.serviceNmber == serviceNmber
+				})
+				changeStateWc[0].state = "待评价";
+				// 野狗删除这条
+				axios.delete('/appointList/' + changeStateWc[0].appointId + ".json")
+				.then(res=>{
+					// vuex删除这条
+					var index = this.stateList.indexOf(changeStateWc[0]);
+					this.stateList.splice(index,1);
+				})
 			}
 		},
 		created(){
-			axios.get('/appointList.json')
+			/*axios.get('/appointList.json')
 			.then(res=>{
 				this.loading = false;
 				var stateList = [];
@@ -76,7 +96,7 @@
 				}
 				this.stateList = stateList;
 				console.log(stateList)
-			})
+			})*/
 		}
 	}
 </script>
