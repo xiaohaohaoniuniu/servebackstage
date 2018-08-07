@@ -86,17 +86,7 @@
 			}
 		},
 		created(){
-			/*axios.get('/appointList.json')
-			.then(res=>{
-				this.loading = false;
-				var stateList = [];
-				for(var k in res.data){
-					res.data[k].appointId = k;
-					stateList.push(res.data[k])
-				}
-				this.stateList = stateList;
-				console.log(stateList)
-			})*/
+			
 		}
 	}
 </script>
