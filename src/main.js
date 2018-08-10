@@ -8,7 +8,7 @@ import axios from 'axios'
 import {store} from './store/store.js'
 Vue.use(Vuex)
 
-axios.defaults.baseURL="https://wd4640130063rgvvtn.wilddogio.com/"
+axios.defaults.baseURL="https://wd9077913423avyuea.wilddogio.com/"
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
